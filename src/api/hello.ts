@@ -1,8 +1,8 @@
 export const DEFAULT_API_URL = "http://localhost:8080";
 
-type HelloResponse = { message: string };
+type HelloResponse = { greeting: string };
 
-// Calls GET /hello on the API and returns its message.
+// Calls GET /hello on the API and returns its greeting.
 export async function fetchHello(
   baseUrl: string = import.meta.env.VITE_API_URL ?? DEFAULT_API_URL,
   fetchFn: typeof fetch = fetch,
@@ -12,5 +12,5 @@ export async function fetchHello(
     throw new Error(`GET /hello failed with status ${res.status}`);
   }
   const body = (await res.json()) as HelloResponse;
-  return body.message;
+  return body.greeting;
 }
